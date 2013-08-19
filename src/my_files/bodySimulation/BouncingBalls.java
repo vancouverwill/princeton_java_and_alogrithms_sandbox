@@ -1,5 +1,5 @@
-package src.willmelbourne.bodySimulation;
-import src.willmelbourne.functions.Ball;
+package src.my_files.bodySimulation;
+import src.my_files.functions.Ball;
 import standard_libraries.StdDraw;
 
 /*************************************************************************
