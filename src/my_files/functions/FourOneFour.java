@@ -28,8 +28,10 @@ public class FourOneFour {
 					 tempNumber = randomNumber.nextInt();
 				}
 				
-				grid[horiztontalSize][verticalSize] = tempNumber;
 				System.out.println(tempNumber);
+				tempNumber = 5;
+				grid[horiztontalSize][verticalSize] = 6;
+				
 			}
         }
 		
