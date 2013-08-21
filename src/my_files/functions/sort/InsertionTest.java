@@ -1,4 +1,4 @@
-package src.my_files.functions;
+package src.my_files.functions.sort;
 
 import standard_libraries.StdOut;
 import standard_libraries.StopWatch;
@@ -25,6 +25,7 @@ import standard_libraries.StopWatch;
 
 
 public class InsertionTest {
+	
     public static double timeTrials(int M, int N) {
         Double[] a = new Double[N];
         double total = 0;
@@ -40,6 +41,7 @@ public class InsertionTest {
 
     public static void main(String[] args) {
         int M = Integer.parseInt(args[0]);
+        
         double prev = timeTrials(M, 512);
         for (int N = 1024; true; N += N) {
             double curr =  timeTrials(M, N);

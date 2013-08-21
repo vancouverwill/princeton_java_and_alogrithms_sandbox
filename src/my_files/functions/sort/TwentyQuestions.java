@@ -1,4 +1,4 @@
-package src.my_files.functions;
+package src.my_files.functions.sort;
 
 import standard_libraries.StdIn;
 import standard_libraries.StdOut;

@@ -1,4 +1,4 @@
-package src.my_files.functions;
+package src.my_files.functions.sort;
 
 /*************************************************************************
  *  Compilation:  javac BinarySearch.java
@@ -42,6 +42,7 @@ public class BinarySearch {
 //    	In in = "word ";
         String s = in.readAll();
         String[] words = s.split("\\s+");
+        System.out.println(words.toString());
         System.err.println("Done reading words");
 
         // sort the words (if needed)

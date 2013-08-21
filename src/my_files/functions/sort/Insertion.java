@@ -1,4 +1,4 @@
-package src.my_files.functions;
+package src.my_files.functions.sort;
 
 import standard_libraries.StdIn;
 import standard_libraries.StdOut;
@@ -40,7 +40,15 @@ public class Insertion {
     // read in a sequence of words from standard input and print
     // them out in sorted order
     public static void main(String[] args) {
+    	
+    	System.out.println("begin");
+    	
         String[] a = StdIn.readAll().split("\\s+");
+        
+        System.out.println("begin 2");
+    	
+        System.out.println(a.toString());
+        
         sort(a);
         for (int i = 0; i < a.length; i++) {
             StdOut.print(a[i] + " ");
