@@ -106,8 +106,8 @@ public class UnionFind {
 
 
     public static void main(String[] args) {
-//        int N = StdIn.readInt();
-        int N  =13;
+        int N = StdIn.readInt();
+//        int N  =13;
         UnionFind uf = new UnionFind(N);
 
         // read in a sequence of pairs of integers (each in the range 0 to N-1),

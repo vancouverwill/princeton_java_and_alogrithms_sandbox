@@ -1,4 +1,4 @@
-package unionfind_casestudy;
+package src.my_files.functions;
 
 import standard_libraries.StdIn;
 import standard_libraries.StdOut;
@@ -11,15 +11,16 @@ import standard_libraries.StdOut;
  *  Weighted quick-union (without path compression).
  *
  ****************************************************************************/
+//import algs4.StdIn;
 
-public class WeightedQuickUnionUF {
+public class WeightedQuickUnionUF2 {
     private int[] id;    // id[i] = parent of i
     private int[] sz;    // sz[i] = number of objects in subtree rooted at i
     private int count;   // number of components
 
     // Create an empty union find data structure with N isolated sets.
-    public WeightedQuickUnionUF(int N) {
-        count = N;
+    public WeightedQuickUnionUF2(int N) {
+    	count = N;
         id = new int[N];
         sz = new int[N];
         for (int i = 0; i < N; i++) {
@@ -60,13 +61,8 @@ public class WeightedQuickUnionUF {
 
 
     public static void main(String[] args) {
-    	StdOut.println("begin process 1");
-        //
-    	int N = StdIn.readInt();
-//        int N = 10;
-        WeightedQuickUnionUF uf = new WeightedQuickUnionUF(N);
-        
-        StdOut.println("begin process");
+        int N = StdIn.readInt();
+        WeightedQuickUnionUF2 uf = new WeightedQuickUnionUF2(N);
 
         // read in a sequence of pairs of integers (each in the range 0 to N-1),
          // calling find() for each pair: If the members of the pair are not already
@@ -77,8 +73,12 @@ public class WeightedQuickUnionUF {
             if (uf.connected(p, q)) continue;
             uf.union(p, q);
             StdOut.println(p + " " + q);
+            
+//            String 
+//            StdOut.println(
         }
         StdOut.println(uf.count() + " components");
     }
+
 
 }
