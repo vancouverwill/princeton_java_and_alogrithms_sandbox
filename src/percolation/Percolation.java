@@ -1,6 +1,9 @@
 package src.percolation;
 
+import standard_libraries.StdArrayIO;
 import standard_libraries.StdDraw;
+import standard_libraries.StdOut;
+import standard_libraries.StdRandom;
 
 /*************************************************************************
  *  Compilation:  javac Percolation.java
