@@ -7,70 +7,92 @@ import standard_libraries.StdIn;
 import standard_libraries.StdOut;
 
 /*************************************************************************
- *  Compilation:  javac Shell.java
- *  Execution:    java Shell < input.txt
+ *  Compilation:  javac MergeBU.java
+ *  Execution:    java MergeBU < input.txt
  *  Dependencies: StdOut.java StdIn.java
- *  Data files:   http://algs4.cs.princeton.edu/21sort/tiny.txt
- *                http://algs4.cs.princeton.edu/21sort/words3.txt
+ *  Data files:   http://algs4.cs.princeton.edu/22mergesort/tiny.txt
+ *                http://algs4.cs.princeton.edu/22mergesort/words3.txt
  *   
- *  Sorts a sequence of strings from standard input using shellsort.
- *
- *  Uses increment sequence proposed by Sedgewick and Incerpi.
- *  The nth element of the sequence is the smallest integer >= 2.5^n
- *  that is relatively prime to all previous terms in the sequence.
- *  For example, incs[4] is 41 because 2.5^4 = 39.0625 and 41 is
- *  the next integer that is relatively prime to 3, 7, and 16.
+ *  Sorts a sequence of strings from standard input using
+ *  bottom-up mergesort.
  *   
  *  % more tiny.txt
  *  S O R T E X A M P L E
  *
- *  % java Shell < tiny.txt
+ *  % java MergeBU < tiny.txt
  *  A E E L M O P R S T X                 [ one string per line ]
  *    
  *  % more words3.txt
  *  bed bug dad yes zoo ... all bad yet
  *  
- *  % java Shell < words3.txt
+ *  % java MergeBU < words3.txt
  *  all bad bed bug dad ... yes yet zoo    [ one string per line ]
- *
  *
  *************************************************************************/
 
-public class Shell {
+public class MergeBU {
+	
+	private static int compareCount;
+	private static int exchCount;
+	private static int mergeCount;
 
-    // sort the array a[] in ascending order using Shellsort
+
+
+    // stably merge a[lo..m] with a[m+1..hi] using aux[lo..hi]
+    private static void merge(Comparable[] a, Comparable[] aux, int lo, int m, int hi) {
+    	mergeCount++;
+    	exchCount++;
+    	
+        // copy to aux[]
+        for (int k = lo; k <= hi; k++) {
+            aux[k] = a[k]; 
+        }
+
+        // merge back to a[]
+        int i = lo, j = m+1;
+        for (int k = lo; k <= hi; k++) {
+            if      (i > m)                a[k] = aux[j++];
+            else if (j > hi)               a[k] = aux[i++];
+            else if (less(aux[j], aux[i])) a[k] = aux[j++];
+            else                           a[k] = aux[i++];
+        }
+    	System.out.println("merge complete");
+    	show(a);
+    }
+
+    // bottom-up mergesort
     public static void sort(Comparable[] a) {
+    	
+    	compareCount = 0;
+    	exchCount = 0;
+    	mergeCount = 0;
+    	
+    	
         int N = a.length;
-
-        // 3x+1 increment sequence:  1, 4, 13, 40, 121, 364, 1093, ... 
-        int h = 1;
-        while (h < N/3) h = 3*h + 1; 
-
-        while (h >= 1) {
-            // h-sort the array
-            for (int i = h; i < N; i++) {
-                for (int j = i; j >= h && less(a[j], a[j-h]); j -= h) {
-                    exch(a, j, j-h);
-                }
+        Comparable[] aux = new Comparable[N];
+        for (int n = 1; n < N; n = n+n) {
+            for (int i = 0; i < N-n; i += n+n) {
+                int lo = i;
+                int m  = i+n-1;
+                int hi = Math.min(i+n+n-1, N-1);
+                merge(a, aux, lo, m, hi);
+                
             }
-            assert isHsorted(a, h); 
-            h /= 3;
         }
         assert isSorted(a);
     }
 
-
-
-   /***********************************************************************
+  /***********************************************************************
     *  Helper sorting functions
     ***********************************************************************/
     
     // is v < w ?
     private static boolean less(Comparable v, Comparable w) {
+    	compareCount++;
         return (v.compareTo(w) < 0);
     }
-        
-    // exchange a[i] and a[j]
+
+   // exchange a[i] and a[j]
     private static void exch(Object[] a, int i, int j) {
         Object swap = a[i];
         a[i] = a[j];
@@ -87,13 +109,6 @@ public class Shell {
         return true;
     }
 
-    // is the array h-sorted?
-    private static boolean isHsorted(Comparable[] a, int h) {
-        for (int i = h; i < a.length; i++)
-            if (less(a[i], a[i-h])) return false;
-        return true;
-    }
-
     // print array to standard output
     private static void show(Comparable[] a) {
         for (int i = 0; i < a.length; i++) {
@@ -104,29 +119,22 @@ public class Shell {
     // Read strings from standard input, sort them, and print.
     public static void main(String[] args) {
 //        String[] a = StdIn.readStrings();
-    	
-ResizingArrayQueue<Integer> queue = new ResizingArrayQueue();
+//        MergeBU.sort(a);
+//        show(a);
+        
+	ResizingArrayQueue<Integer> queue = new ResizingArrayQueue();
     	
     	while (StdIn.hasNextChar()) {
-//        String[] a = StdIn.readStrings();
-//	    	String num = StdIn.readString();
 	    	int num = StdIn.readInt();
-
-//	    	if (num != "-") {
 	    	if (num < 0) {
 	    		break;
 	    	}
 	    	else {
 	    		queue.enqueue(num);
 	    	}
-	    	
-	    	
     	}
     	
     	System.out.println(queue.toString());
-    	
-    	System.out.println("You have " + queue.size() + " elements in your queue");
-    	
     	String[] a = new String[queue.size()];
     	
 //    	System.out.print("Original contents of al: ");
@@ -141,10 +149,18 @@ ResizingArrayQueue<Integer> queue = new ResizingArrayQueue();
            
            count++;
         }
-        Shell.show(a);
+    	
         System.out.println("");
-        Shell.sort(a);
-        Shell.show(a);
+        show(a);
+        
+        MergeBU.sort(a);
+        System.out.println("");
+        show(a);
+        
+        System.out.println("CompareCount was " + compareCount);
+        System.out.println("ExchangeCounte was " + exchCount);
+        System.out.println("MergeCount was " + mergeCount);
     }
-
 }
+
+

@@ -23,6 +23,9 @@ package sorting;
  *************************************************************************/
 
 import java.util.Comparator;
+import java.util.Iterator;
+
+import collections.ResizingArrayQueue;
 
 import standard_libraries.StdIn;
 import standard_libraries.StdOut;
@@ -32,13 +35,17 @@ public class Insertion {
     // use natural order and Comparable interface
     public static void sort(Comparable[] a) {
         int N = a.length;
+        int count = 0;
         for (int i = 0; i < N; i++) {
             for (int j = i; j > 0 && less(a[j], a[j-1]); j--) {
                 exch(a, j, j-1);
+                count++;
             }
             assert isSorted(a, 0, i);
         }
         assert isSorted(a);
+        
+        System.out.println("This sort of " + N + " objects took " + count + " sorts");
     }
 
     // use a custom order and Comparator interface - see Section 3.5
@@ -124,14 +131,59 @@ public class Insertion {
    // print array to standard output
     private static void show(Comparable[] a) {
         for (int i = 0; i < a.length; i++) {
-            StdOut.println(a[i]);
+        	StdOut.println(" ");
+            StdOut.print(a[i] + " ");
         }
     }
 
     // Read strings from standard input, sort them, and print.
     public static void main(String[] args) {
-        String[] a = StdIn.readStrings();
+    	// original main begins
+//        String[] a = StdIn.readStrings();
+//        Insertion.sort(a);
+//        show(a);
+    	//original main ends
+    	
+    	
+    	ResizingArrayQueue<Integer> queue = new ResizingArrayQueue();
+    	
+    	while (StdIn.hasNextChar()) {
+//        String[] a = StdIn.readStrings();
+//	    	String num = StdIn.readString();
+	    	int num = StdIn.readInt();
+
+//	    	if (num != "-") {
+	    	if (num < 0) {
+	    		break;
+	    	}
+	    	else {
+	    		queue.enqueue(num);
+	    	}
+	    	
+	    	
+    	}
+    	
+    	System.out.println(queue.toString());
+    	
+    	System.out.println("You have " + queue.size() + " elements in your queue");
+    	
+    	String[] a = new String[queue.size()];
+    	
+//    	System.out.print("Original contents of al: ");
+    	Iterator<Integer> itr = queue.iterator();
+        int count = 0;
+        while(itr.hasNext()) {
+           Integer element = itr.next();
+           String elementString = element.toString();
+           System.out.print(elementString + " ");
+           
+           a[count] = elementString;
+           
+           count++;
+        }
+    	
+        Insertion.show(a);
         Insertion.sort(a);
-        show(a);
+        Insertion.show(a);
     }
 }

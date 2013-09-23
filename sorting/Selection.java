@@ -35,15 +35,20 @@ public class Selection {
     // selection sort
     public static void sort(Comparable[] a) {
         int N = a.length;
+        int count = 0;
         for (int i = 0; i < N; i++) {
             int min = i;
             for (int j = i+1; j < N; j++) {
                 if (less(a[j], a[min])) min = j;
+                
             }
             exch(a, i, min);
+            count++;
             assert isSorted(a, 0, i);
         }
         assert isSorted(a);
+        
+        System.out.println("This sort of " + N + " objects took " + count + " sorts");
     }
 
     // use a custom order and Comparator interface - see Section 3.5
@@ -127,23 +132,16 @@ public class Selection {
     	ResizingArrayQueue<Integer> queue = new ResizingArrayQueue();
     	
     	while (StdIn.hasNextChar()) {
-//        String[] a = StdIn.readStrings();
-//	    	String num = StdIn.readString();
 	    	int num = StdIn.readInt();
-
-//	    	if (num != "-") {
 	    	if (num < 0) {
 	    		break;
 	    	}
 	    	else {
 	    		queue.enqueue(num);
 	    	}
-	    	
-	    	
     	}
     	
     	System.out.println(queue.toString());
-    	
     	String[] a = new String[queue.size()];
     	
 //    	System.out.print("Original contents of al: ");
