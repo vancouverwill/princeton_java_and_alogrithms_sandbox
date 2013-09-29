@@ -145,7 +145,7 @@ public class Quick {
     public static void main(String[] args) {
 //        String[] a = StdIn.readStrings();
     	
-ResizingArrayQueue<Integer> queue = new ResizingArrayQueue();
+    	ResizingArrayQueue<Integer> queue = new ResizingArrayQueue();
     	
     	while (StdIn.hasNextChar()) {
 	    	int num = StdIn.readInt();
