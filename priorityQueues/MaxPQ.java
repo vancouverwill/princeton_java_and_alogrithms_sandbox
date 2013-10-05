@@ -20,6 +20,7 @@ import java.util.NoSuchElementException;
 
 import standard_libraries.StdIn;
 import standard_libraries.StdOut;
+import utilities.ImportStyles;
 
 /**
  *  The <tt>MaxPQ</tt> class represents a priority queue of generic keys.
@@ -241,16 +242,33 @@ public class MaxPQ<Key> implements Iterable<Key> {
     }
 
    /**
+    *  P Q E X A M P L E A B
      * A test client.
      */
     public static void main(String[] args) {
-        MaxPQ<String> pq = new MaxPQ<String>();
-        while (!StdIn.isEmpty()) {
-            String item = StdIn.readString();
+    	
+    	String[] input = ImportStyles.readStringsUntilSymbolToArray(args, "*");
+    	MaxPQ<String> pq = new MaxPQ<String>();
+        
+        for (int i = 0; i < input.length; i++) {
+        	
+        	String item = input[i];
             if (!item.equals("-")) pq.insert(item);
             else if (!pq.isEmpty()) StdOut.print(pq.delMax() + " ");
         }
         StdOut.println("(" + pq.size() + " left on pq)");
+        
+        pq.delMax();
+        pq.delMax();
+        pq.delMax();
+        
+//        MaxPQ<String> pq = new MaxPQ<String>();
+//        while (!StdIn.isEmpty()) {
+//            String item = StdIn.readString();
+//            if (!item.equals("-")) pq.insert(item);
+//            else if (!pq.isEmpty()) StdOut.print(pq.delMax() + " ");
+//        }
+//        StdOut.println("(" + pq.size() + " left on pq)");
     }
 
 }

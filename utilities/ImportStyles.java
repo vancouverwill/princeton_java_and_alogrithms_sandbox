@@ -1,9 +1,13 @@
 package utilities;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.util.Iterator;
 
 //import sorting.Quick;
+import standard_libraries.StdArrayIO;
 import standard_libraries.StdIn;
+import standard_libraries.StdOut;
 //import standard_libraries.StdOut;
 import collections.ResizingArrayQueue;
 
@@ -90,5 +94,59 @@ public class ImportStyles {
 	      return a;
 	      
   }
+	
+	
+	public static void mainReadFilesToArray(String[] args) 
+	{
+		mainReadFiles( args);
+	}
+	
+	
+	public static void mainReadFiles(String[] args)
+	{
+    	
+		// Required arguments with initialized values
+		int     argSize = 1;
+		
+		// Optional 3rd argument 
+		String  argFileName;
+		
+		// No - are we reading file input?
+		if(args.length == argSize)
+		{
+			// Yes - does the 3rd argument have some content?
+			if(args[1].length() > 0)
+			{
+			    // Yes - save the file we'll read from
+			    argFileName = args[1];
+			
+			    try
+			    {
+			        // Open the file and redirect to stdin 
+			        System.setIn(new FileInputStream(argFileName));
+			
+			        
+//			        boolean[][] open = StdArrayIO.readBoolean2D();
+//			        
+//			        boolean[][] full = flow(open);
+//			        StdArrayIO.print(open);
+//			        StdArrayIO.print(full);
+//			        StdOut.println(percolates(open));
+//			        show(full, true);
+			    }
+			    catch(FileNotFoundException ex)
+			    {
+			        // Show error
+			        StdOut.println(ex.toString());
+			    }
+			}
+		}
+		else
+		{
+			// No - show usage instructions
+			StdOut.println("Command line arguments must be one of the following:");
+			StdOut.println("    X  path/filename.ext");
+		}
+	}      
 
 }

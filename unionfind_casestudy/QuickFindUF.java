@@ -56,6 +56,7 @@ public class QuickFindUF {
          // calling find() for each pair: If the members of the pair are not already
         // call union() and print the pair.
         while (!StdIn.isEmpty()) {
+//        while (!StdIn.hasNextChar()) {
             int p = StdIn.readInt();
             int q = StdIn.readInt();
             if (uf.connected(p, q)) continue;

@@ -1,4 +1,4 @@
-package src.my_files.functions.sort;
+package sorting;
 
 /*************************************************************************
  *  Compilation:  javac QuickSort.java

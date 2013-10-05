@@ -113,14 +113,19 @@ public class UnionFind {
         // read in a sequence of pairs of integers (each in the range 0 to N-1),
          // calling find() for each pair: If the members of the pair are not already
         // call union() and print the pair.
-        while (!StdIn.isEmpty()) {
+//        while (!StdIn.isEmpty()) {
+        while (StdIn.hasNextChar()) {
             int p = StdIn.readInt();
+            if (p < 0) {
+            	break;
+            }
             int q = StdIn.readInt();
             if (uf.connected(p, q)) continue;
             uf.union(p, q);
             StdOut.println(p + " " + q);
         }
         StdOut.println(uf.count() + " components");
+        StdOut.println(uf);
     }
 
 }

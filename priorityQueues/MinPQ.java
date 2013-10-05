@@ -246,9 +246,6 @@ public class MinPQ<Key> implements Iterable<Key> {
         for (int i = 0; i < input.length; i++) {
         	
         	String item = input[i];
-        
-//        while (!StdIn.isEmpty()) {
-//            String item = StdIn.readString();
             if (!item.equals("-")) pq.insert(item);
             else if (!pq.isEmpty()) StdOut.print(pq.delMin() + " ");
         }

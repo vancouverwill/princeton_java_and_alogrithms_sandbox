@@ -59,6 +59,10 @@ public class Merge {
             else if (less(aux[j], aux[i])) a[k] = aux[j++];
             else                           a[k] = aux[i++];
         }
+        
+        show(a, "A []");
+        show(aux, "aux []");
+//        show(j, "j []");
 
         // postcondition: a[lo .. hi] is sorted
         assert isSorted(a, lo, hi);
@@ -161,12 +165,19 @@ public class Merge {
     }
 
     // print array to standard output
-    private static void show(Comparable[] a) {
+    private static void show(Comparable[] a, String title) {
+    	StdOut.print(title);
         for (int i = 0; i < a.length; i++) {
-            StdOut.println(a[i]);
+//            StdOut.println(a[i]);
+            StdOut.print(a[i] + " ");
+            
         }
+        StdOut.println();
+        StdOut.println();
     }
-
+    // use 
+    // A E Q S U Y E I N O S T - 
+    // to run
     // Read strings from standard input, sort them, and print.
     public static void main(String[] args) {
 //        String[] a = StdIn.readStrings();
@@ -174,15 +185,19 @@ public class Merge {
 //        show(a);
     	
     	
-    	ResizingArrayQueue<Integer> queue = new ResizingArrayQueue();
+    	ResizingArrayQueue<String> queue = new ResizingArrayQueue<String>();
     	
     	while (StdIn.hasNextChar()) {
-	    	int num = StdIn.readInt();
-	    	if (num < 0) {
+//	    	int num = StdIn.readInt();
+//	    	if (num < 0) {
+//	    		break;
+//	    	}
+	    	String string = StdIn.readString();
+	    	if (string.equals("-")) {
 	    		break;
 	    	}
 	    	else {
-	    		queue.enqueue(num);
+	    		queue.enqueue(string);
 	    	}
     	}
     	
@@ -190,10 +205,10 @@ public class Merge {
     	String[] a = new String[queue.size()];
     	
 //    	System.out.print("Original contents of al: ");
-    	Iterator<Integer> itr = queue.iterator();
+    	Iterator<String> itr = queue.iterator();
         int count = 0;
         while(itr.hasNext()) {
-           Integer element = itr.next();
+        	String element = itr.next();
            String elementString = element.toString();
            System.out.print(elementString + " ");
            
@@ -202,9 +217,9 @@ public class Merge {
            count++;
         }
     	
-        show(a);
+        show(a, "before");
         Merge.sort(a);
-        show(a);
+        show(a, "after");
         
         System.out.println("CompareCount was " + compareCount);
         System.out.println("ExchangeCounte was " + exchCount);

@@ -1,4 +1,4 @@
-package standard_libraries;
+package symbolTables;
 /*************************************************************************
  *  Compilation:  javac StdOut.java
  *  Execution:    java StdOut
