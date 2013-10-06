@@ -33,6 +33,7 @@ public class MyMinPriorityQueue<Key> implements Iterable<Key> {
      * Create an empty priority queue with the given initial capacity,
      * using the given comparator.
      */
+	@SuppressWarnings("unchecked")
 	public MyMinPriorityQueue( int initCapacity, Comparator<Key> comparator) 
 	{
 		this.comparator = comparator;
@@ -126,7 +127,7 @@ public class MyMinPriorityQueue<Key> implements Iterable<Key> {
 	    **********************************************************************/
 	private void swim( int k)
 	{
-		while(K > 1 && greater(k/2, k)) {
+		while(k > 1 && greater(k/2, k)) {
 			exch(k,k/2);
 			k = k/2;
 		}

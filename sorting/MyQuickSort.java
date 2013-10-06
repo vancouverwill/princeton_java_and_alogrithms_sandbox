@@ -17,13 +17,14 @@ public class MyQuickSort {
 	
 	 // quicksort the array
     public static void sort(Comparable[] a) {
-        StdRandom.shuffle(a);
+//        StdRandom.shuffle(a);
         sort(a, 0, a.length - 1);
     }
 	
 	
 	private static void sort(Comparable[] a, int lo, int hi)
 	{
+//		show(a);
 		if (hi <= lo) return;
 		int j = partition(a, lo, hi);
 		sort(a, lo, j - 1);
@@ -37,18 +38,21 @@ public class MyQuickSort {
     // so that a[lo .. j-1] <= a[j] <= a[j+1 .. hi]
 	private static int partition( Comparable[] a, int lo, int hi)
 	{
+		System.out.println("part");
+		show( a, lo, hi);
 		int i = lo;
 		int j = hi + 1;
 		Comparable v = a[lo];
+		
 		while (true) {
 			
 			 // find item on lo to swap
-			while (less(a[++i], a[lo])) {
+			while (less(a[++i], v)) {
 				if (i == hi) break;
 			}
 			
 			// find item on hi to swap
-			while (less(a[lo], a[--j])) {
+			while (less(v, a[--j])) {
 				if (j == lo) break;   
 			}
 			
@@ -98,12 +102,20 @@ public class MyQuickSort {
 	// print array to standard output
     private static void show(Comparable[] a) {
         for (int i = 0; i < a.length; i++) {
-            StdOut.println(a[i]);
+            StdOut.print(a[i] + " ");
+        }
+    }
+    
+ // print array to standard output
+    private static void show(Comparable[] a, int lo, int hi) {
+        for (int i = lo; i < hi; i++) {
+            StdOut.print(a[i] + " ");
         }
     }
 	
 	
 	 // Read strings from standard input, sort them, and print.
+    // 5 3 5 1 4 6 9 7 5 -1
     public static void main(String[] args) {
 //        String[] a = StdIn.readStrings();
     	
@@ -119,7 +131,7 @@ public class MyQuickSort {
 	    	}
     	}
     	
-    	System.out.println(queue.toString());
+//    	System.out.println(queue.toString());
     	String[] a = new String[queue.size()];
     	
 //    	System.out.print("Original contents of al: ");
@@ -135,8 +147,12 @@ public class MyQuickSort {
            count++;
         }
         
+        
+        System.out.println();
+        System.out.println();
+        System.out.println();
         MyQuickSort.sort(a);
-        show(a);
+//        show(a);
 
         // display results again using select
         StdOut.println();
