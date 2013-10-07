@@ -9,13 +9,11 @@ import standard_libraries.StdOut;
 
 //import collections.Stack.Node;
 
-public class MyStack<Item> 
-//implements Iterable<Item>
+public class MyStack<Item> implements Iterable<Item>
 {
 	private int N; // number in collection;
 	private Node first; 	// size of stack
 	
-	private Vector vector;
 	
 	// helper linked list class
 	private class Node {
@@ -103,26 +101,26 @@ public class MyStack<Item>
     /**
      * Return an iterator to the stack that iterates through the items in LIFO order.
      */
-//    public Iterator<Item> iterator() { return new ListIterator(); }
-//    
-// // an iterator, doesn't implement remove() since it's optional
-//    private class ListIterator implements Iterator<Item> {
-//    	private Node current = first;
-//
-//		@Override
-//		public boolean hasNext() { return current != null; }
-//
-//		@Override
-//		public Item next() { 
-//			if (!hasNext()) throw new NoSuchElementException();
-//			Item item = current.item;
-//			current = current.next;
-//			return item;
-//		}
-//
-//		@Override
-//		public void remove() { throw new UnsupportedOperationException(); }
-//    }
+    public Iterator<Item> iterator() { return new ListIterator(); }
+    
+ // an iterator, doesn't implement remove() since it's optional
+    private class ListIterator implements Iterator<Item> {
+    	private Node current = first;
+
+		@Override
+		public boolean hasNext() { return current != null; }
+
+		@Override
+		public Item next() { 
+			if (!hasNext()) throw new NoSuchElementException();
+			Item item = current.item;
+			current = current.next;
+			return item;
+		}
+
+		@Override
+		public void remove() { throw new UnsupportedOperationException(); }
+    }
 	
     
 	 // check internal invariants

@@ -39,7 +39,7 @@ public class Quick {
 
     // quicksort the array
     public static void sort(Comparable[] a) {
-        StdRandom.shuffle(a);
+//        StdRandom.shuffle(a);
         sort(a, 0, a.length - 1);
     }
 
@@ -147,15 +147,15 @@ public class Quick {
     	
     	ResizingArrayQueue<Integer> queue = new ResizingArrayQueue();
     	
-    	while (StdIn.hasNextChar()) {
-	    	int num = StdIn.readInt();
-	    	if (num < 0) {
-	    		break;
-	    	}
-	    	else {
-	    		queue.enqueue(num);
-	    	}
-    	}
+//    	while (StdIn.hasNextChar()) {
+//	    	int num = StdIn.readInt();
+//	    	if (num < 0) {
+//	    		break;
+//	    	}
+//	    	else {
+//	    		queue.enqueue(num);
+//	    	}
+//    	}
     	
     	System.out.println(queue.toString());
     	String[] a = new String[queue.size()];
@@ -173,8 +173,10 @@ public class Quick {
            count++;
         }
         
-        Quick.sort(a);
-        show(a);
+        String[] array= {"4", "0", "5", "1", "9", "133434"};
+        
+        Quick.sort(array);
+        show(array);
 
         // display results again using select
         StdOut.println();

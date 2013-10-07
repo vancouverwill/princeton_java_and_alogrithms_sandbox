@@ -50,22 +50,8 @@ public class Stack<Item> implements Iterable<Item> {
         N = 0;
         assert check();
     }
-
-   /**
-     * Is the stack empty?
-     */
-    public boolean isEmpty() {
-        return first == null;
-    }
-
-   /**
-     * Return the number of items in the stack.
-     */
-    public int size() {
-        return N;
-    }
-
-   /**
+    
+    /**
      * Add the item to the stack.
      */
     public void push(Item item) {
@@ -90,6 +76,22 @@ public class Stack<Item> implements Iterable<Item> {
         return item;                   // return the saved item
     }
 
+
+   /**
+     * Is the stack empty?
+     */
+    public boolean isEmpty() {
+        return first == null;
+    }
+
+   /**
+     * Return the number of items in the stack.
+     */
+    public int size() {
+        return N;
+    }
+
+  
 
    /**
      * Return the item most recently added to the stack.

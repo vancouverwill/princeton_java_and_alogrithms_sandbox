@@ -1,5 +1,7 @@
 package collections;
 
+import java.util.NoSuchElementException;
+
 //import collections.Queue.Node;
 
 public class MyQueue<Item> {
@@ -50,6 +52,20 @@ public class MyQueue<Item> {
     	else oldLast.next = last;
     	N++;
     	assert check();
+    }
+    
+    /**
+     * Remove and return the item on the queue least recently added.
+     * @throws java.util.NoSuchElementException if queue is empty.
+     */
+    public Item dequeue() {
+        if (isEmpty()) throw new NoSuchElementException("Queue underflow");
+        Item item = first.item;
+        first = first.next;
+        N--;
+        if (isEmpty()) last = null;   // to avoid loitering
+        assert check();
+        return item;
     }
     
     // check internal invariants

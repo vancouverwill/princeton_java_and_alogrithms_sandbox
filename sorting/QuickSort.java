@@ -26,7 +26,7 @@ public class QuickSort {
     *  Quicksort code from Sedgewick 7.1, 7.2.
     ***********************************************************************/
     public static void quicksort(double[] a) {
-        shuffle(a);                        // to guard against worst-case
+//        shuffle(a);                        // to guard against worst-case
         quicksort(a, 0, a.length - 1);
     }
 
@@ -110,7 +110,10 @@ public class QuickSort {
 
         // sort them
         start = System.currentTimeMillis();
-        quicksort(a);
+        
+        double[] array= {0, 5, 1, 9, 13};
+        
+        quicksort(array);
         stop = System.currentTimeMillis();
         elapsed = (stop - start) / 1000.0;
         System.out.println("Quicksort:   " + elapsed + " seconds");

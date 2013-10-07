@@ -5,7 +5,7 @@ public class MyBinarySearchTree<Key extends Comparable<Key>, Value> {
 	
 	private class Node {
 		private Key key;	// sorted by key
-		private Value val		// associated data
+		private Value val;		// associated data
 		private Node left, right;
 		private int N;
 		

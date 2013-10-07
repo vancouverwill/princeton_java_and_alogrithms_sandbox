@@ -50,31 +50,8 @@ public class Queue<Item> implements Iterable<Item> {
         N = 0;
         assert check();
     }
-
-   /**
-     * Is the queue empty?
-     */
-    public boolean isEmpty() {
-        return first == null;
-    }
-
-   /**
-     * Return the number of items in the queue.
-     */
-    public int size() {
-        return N;     
-    }
-
-   /**
-     * Return the item least recently added to the queue.
-     * @throws java.util.NoSuchElementException if queue is empty.
-     */
-    public Item peek() {
-        if (isEmpty()) throw new NoSuchElementException("Queue underflow");
-        return first.item;
-    }
-
-   /**
+    
+    /**
      * Add the item to the queue.
      */
     public void enqueue(Item item) {
@@ -101,6 +78,31 @@ public class Queue<Item> implements Iterable<Item> {
         assert check();
         return item;
     }
+
+   /**
+     * Is the queue empty?
+     */
+    public boolean isEmpty() {
+        return first == null;
+    }
+
+   /**
+     * Return the number of items in the queue.
+     */
+    public int size() {
+        return N;     
+    }
+
+   /**
+     * Return the item least recently added to the queue.
+     * @throws java.util.NoSuchElementException if queue is empty.
+     */
+    public Item peek() {
+        if (isEmpty()) throw new NoSuchElementException("Queue underflow");
+        return first.item;
+    }
+
+  
 
    /**
      * Return string representation.
