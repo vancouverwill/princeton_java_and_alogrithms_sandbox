@@ -6,7 +6,7 @@ import collections.ResizingArrayQueue;
 import standard_libraries.StdIn;
 import standard_libraries.StdOut;
 import standard_libraries.StdRandom;
-
+/** Low comparator **/
 /*************************************************************************
  *  Compilation:  javac Quick.java
  *  Execution:    java Quick < input.txt
@@ -174,9 +174,15 @@ public class Quick {
         }
         
         String[] array= {"4", "0", "5", "1", "9", "133434"};
+        String[] arrayFull = {"25", "37", "45", "84", "74", "16", "99", "64", "15", "14", "26", "43"};
         
-        Quick.sort(array);
-        show(array);
+        String[] arrayShort = {"25", "37", "45", "84", "74"};
+        String[] arrayShort2 = {"16", "99", "64", "15", "14"};
+        
+        String[] letterArray = {"A", "A", "A", "B", "B", "A", "B", "A", "B", "A", "A", "A"};
+        
+        Quick.sort(letterArray);
+        show(letterArray);
 
         // display results again using select
         StdOut.println();

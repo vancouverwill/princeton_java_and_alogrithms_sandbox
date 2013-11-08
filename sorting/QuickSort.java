@@ -1,5 +1,5 @@
 package sorting;
-
+/** High comparator **/
 /*************************************************************************
  *  Compilation:  javac QuickSort.java
  *  Execution:    java QuickSort N

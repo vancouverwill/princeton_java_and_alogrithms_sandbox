@@ -247,6 +247,13 @@ public class MaxPQ<Key> implements Iterable<Key> {
      */
     public static void main(String[] args) {
     	
+    	 MaxPQ<String> pq1 = new MaxPQ<String>();
+         
+         pq1.insert("125");
+         pq1.insert("25");
+         pq1.isMaxHeap();
+         pq1.insert("5");
+    	
     	String[] input = ImportStyles.readStringsUntilSymbolToArray(args, "*");
     	MaxPQ<String> pq = new MaxPQ<String>();
         
@@ -261,6 +268,9 @@ public class MaxPQ<Key> implements Iterable<Key> {
         pq.delMax();
         pq.delMax();
         pq.delMax();
+        
+       
+        
         
 //        MaxPQ<String> pq = new MaxPQ<String>();
 //        while (!StdIn.isEmpty()) {
