@@ -90,7 +90,7 @@ public class QuickSort {
     public static void main(String[] args) {
         N = Integer.parseInt(args[0]);
         
-        System.out.println("N is -" + N);
+        System.out.println("N is :" + N);
 
         // generate N random real numbers between 0 and 1
         long start = System.currentTimeMillis();
@@ -113,7 +113,12 @@ public class QuickSort {
         
         double[] array= {0, 5, 1, 9, 13};
         
+        System.out.println(array.toString());
+        
         quicksort(array);
+        
+        System.out.println(array.toString());
+        
         stop = System.currentTimeMillis();
         elapsed = (stop - start) / 1000.0;
         System.out.println("Quicksort:   " + elapsed + " seconds");

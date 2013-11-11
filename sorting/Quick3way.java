@@ -103,9 +103,11 @@ public class Quick3way {
 
     // Read strings from standard input, sort them, and print.
     public static void main(String[] args) {
-        String[] a = StdIn.readStrings();
-        Quick3way.sort(a);
-        show(a);
+       // String[] a = StdIn.readStrings();
+        
+        String[] array= {"0", "5", "1", "9", "13"};
+        Quick3way.sort(array);
+        show(array);
     }
 
 }

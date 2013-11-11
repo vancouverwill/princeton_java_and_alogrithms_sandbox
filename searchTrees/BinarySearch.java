@@ -46,9 +46,13 @@ public class BinarySearch {
     }
 
     public static void main(String[] args) {
-        int[] whitelist = In.readInts(args[0]);
+//        int[] whitelist = In.readInts(args[0]);
 
-        Arrays.sort(whitelist);
+//        Arrays.sort(whitelist);
+        
+        int[] whitelist = {27, 33, 35, 39, 40, 46, 55, 61, 62, 64, 72, 81, 85, 86, 88 };
+        
+        StdOut.println(rank(62, whitelist));
 
         // read key; print if not in whitelist
         while (!StdIn.isEmpty()) {

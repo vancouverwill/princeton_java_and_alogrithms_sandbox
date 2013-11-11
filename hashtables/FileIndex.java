@@ -28,6 +28,10 @@ package hashtables;
 
 import java.io.File;
 
+import standard_libraries.In;
+import standard_libraries.StdIn;
+import standard_libraries.StdOut;
+
 public class FileIndex { 
 
     public static void main(String[] args) {
