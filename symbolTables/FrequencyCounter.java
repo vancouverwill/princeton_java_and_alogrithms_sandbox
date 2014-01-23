@@ -7,6 +7,8 @@ import standard_libraries.StdArrayIO;
 import standard_libraries.StdIn;
 import standard_libraries.StdOut;
 
+// symbol table sample client
+
 /*************************************************************************
  *  Compilation:  javac FrequencyCounter.java
  *  Execution:    java FrequencyCounter L < input.txt
